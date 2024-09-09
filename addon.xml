@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.nimbus.helper" name="Nimbus Helper" version="0.0.42" provider-name="Ivar Brandt">
+<addon id="script.nimbusx8.helper" name="NimbusX8 Helper" version="0.0.42" provider-name="Ivar Brandt">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests" version="2.19.1"/>
@@ -17,8 +17,8 @@
             <icon>resources/media/icon.png</icon>
             <fanart>resources/media/fanart.jpg</fanart>
         </assets>
-        <description lang="en_GB">Nimbus Helper for the Nimbus Skin.</description>
-        <description lang="en_NZ">Nimbus Helper for the Nimbus Skin.</description>
-        <description lang="en_US">Nimbus Helper for the Nimbus Skin.</description>
+        <description lang="en_GB">Modded Nimbus Helper for the Nimbus Skin.</description>
+        <description lang="en_NZ">Modded Nimbus Helper for the Nimbus Skin.</description>
+        <description lang="en_US">Modded Nimbus Helper for the Nimbus Skin.</description>
     </extension>
 </addon>

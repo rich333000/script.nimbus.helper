@@ -48,8 +48,8 @@ class Service(xbmc.Monitor):
     def pause_services(self):
         return self.home_window.getProperty("pause_services") == "true"
 
-    def not_nimbus(self):
-        return xbmc.getSkinDir() != "skin.nimbus"
+    def not_nimbusx8(self):
+        return xbmc.getSkinDir() != "skin.nimbusx8"
 
     def container_is_scrolling(self):
         return self.get_visibility("Container.Scrolling")
@@ -107,7 +107,7 @@ class Service(xbmc.Monitor):
             if self.pause_services():
                 self.waitForAbort(2)
                 continue
-            if self.not_nimbus():
+            if self.not_nimbusx8():
                 self.waitForAbort(15)
                 continue
             api_key = self.get_infolabel("Skin.String(mdblist_api_key)")
@@ -128,21 +128,21 @@ class Service(xbmc.Monitor):
             set_property = self.home_window.setProperty
             get_property = self.home_window.getProperty
             clear_property = self.home_window.clearProperty
-            cached_ratings = get_property(f"nimbus.cachedRatings.{imdb_id}")
+            cached_ratings = get_property(f"nimbusx8.cachedRatings.{imdb_id}")
             if not imdb_id or not imdb_id.startswith("tt"):
-                clear_property("nimbus.trailer_ready")
+                clear_property("nimbusx8.trailer_ready")
                 xbmc.executebuiltin(f"Skin.Reset(TrailerPlaybackURL)")
                 for k, v in empty_ratings.items():
-                    set_property("nimbus.%s" % k, str(v))
+                    set_property("nimbusx8.%s" % k, str(v))
                 self.last_set_imdb_id = None
                 self.waitForAbort(0.2)
                 continue
-            current_trailer_ready_status = get_property("nimbus.trailer_ready")
+            current_trailer_ready_status = get_property("nimbusx8.trailer_ready")
             if imdb_id == self.last_set_imdb_id:
                 if current_trailer_ready_status != "true":
-                    set_property("nimbus.trailer_ready", "true")
+                    set_property("nimbusx8.trailer_ready", "true")
                     trailer_url = xbmc.getInfoLabel(
-                        "Window(Home).Property(nimbus.trailer)"
+                        "Window(Home).Property(nimbusx8.trailer)"
                     )
                 if trailer_url:
                     match = video_id_pattern.search(trailer_url)
@@ -157,11 +157,11 @@ class Service(xbmc.Monitor):
                     self.waitForAbort(0.2)
                     continue
             else:
-                clear_property("nimbus.trailer_ready")
+                clear_property("nimbusx8.trailer_ready")
             if cached_ratings:
                 result = json.loads(cached_ratings)
                 for k, v in result.items():
-                    set_property("nimbus.%s" % k, str(v))
+                    set_property("nimbusx8.%s" % k, str(v))
                 self.last_set_imdb_id = imdb_id
                 self.waitForAbort(0.2)
                 continue
@@ -172,16 +172,16 @@ class Service(xbmc.Monitor):
         set_property = self.home_window.setProperty
         result = self.mdblist_api().fetch_info({"imdb_id": imdb_id}, api_key)
         if result:
-            set_property(f"nimbus.cachedRatings.{imdb_id}", json.dumps(result))
+            set_property(f"nimbusx8.cachedRatings.{imdb_id}", json.dumps(result))
             for k, v in result.items():
-                set_property("nimbus.%s" % k, str(v))
+                set_property("nimbusx8.%s" % k, str(v))
 
     def image_monitor(self):
         while not self.abortRequested():
             if self.pause_services():
                 self.waitForAbort(2)
                 continue
-            if self.not_nimbus():
+            if self.not_nimbusx8():
                 self.waitForAbort(15)
                 continue
             if self.get_visibility("Skin.HasSetting(Enable.BackgroundBlur)"):

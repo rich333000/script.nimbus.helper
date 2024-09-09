@@ -12,7 +12,7 @@ import os
 window = Window(10000)
 
 PROFILE_PATH = os.path.join(
-    translatePath("special://userdata/addon_data/script.nimbus.helper"),
+    translatePath("special://userdata/addon_data/script.nimbusx8.helper"),
     "current_profile.json",
 )
 

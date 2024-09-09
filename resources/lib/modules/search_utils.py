@@ -9,14 +9,14 @@ from threading import Thread, Event
 # from modules.logger import logger
 
 settings_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/"
+    "special://profile/addon_data/script.nimbusx8.helper/"
 )
 
 spath_database_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/spath_cache.db"
+    "special://profile/addon_data/script.nimbusx8.helper/spath_cache.db"
 )
 
-search_history_xml = "script-nimbus-search_history"
+search_history_xml = "script-nimbusx8-search_history"
 
 default_xmls = {
     "search_history": (search_history_xml, xmls.default_history, "SearchHistory")

@@ -13,10 +13,10 @@ Listitem = xbmcgui.ListItem
 max_widgets = 50
 
 settings_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/"
+    "special://profile/addon_data/script.nimbusx8.helper/"
 )
 database_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/cpath_cache.db"
+    "special://profile/addon_data/script.nimbusx8.helper/cpath_cache.db"
 )
 (
     movies_widgets_xml,
@@ -24,12 +24,18 @@ database_path = xbmcvfs.translatePath(
     custom1_widgets_xml,
     custom2_widgets_xml,
     custom3_widgets_xml,
+    custom4_widgets_xml,
+    custom5_widgets_xml,
+    custom6_widgets_xml,
 ) = (
-    "script-nimbus-widget_movies",
-    "script-nimbus-widget_tvshows",
-    "script-nimbus-widget_custom1",
-    "script-nimbus-widget_custom2",
-    "script-nimbus-widget_custom3",
+    "script-nimbusx8-widget_movies",
+    "script-nimbusx8-widget_tvshows",
+    "script-nimbusx8-widget_custom1",
+    "script-nimbusx8-widget_custom2",
+    "script-nimbusx8-widget_custom3",
+    "script-nimbusx8-widget_custom4",
+    "script-nimbusx8-widget_custom5",
+    "script-nimbusx8-widget_custom6",
 )
 (
     movies_main_menu_xml,
@@ -37,12 +43,18 @@ database_path = xbmcvfs.translatePath(
     custom1_main_menu_xml,
     custom2_main_menu_xml,
     custom3_main_menu_xml,
+    custom4_main_menu_xml,
+    custom5_main_menu_xml,
+    custom6_main_menu_xml,
 ) = (
-    "script-nimbus-main_menu_movies",
-    "script-nimbus-main_menu_tvshows",
-    "script-nimbus-main_menu_custom1",
-    "script-nimbus-main_menu_custom2",
-    "script-nimbus-main_menu_custom3",
+    "script-nimbusx8-main_menu_movies",
+    "script-nimbusx8-main_menu_tvshows",
+    "script-nimbusx8-main_menu_custom1",
+    "script-nimbusx8-main_menu_custom2",
+    "script-nimbusx8-main_menu_custom3",
+    "script-nimbusx8-main_menu_custom4",
+    "script-nimbusx8-main_menu_custom5",
+    "script-nimbusx8-main_menu_custom6",
 )
 default_xmls = {
     "movie.widget": (movies_widgets_xml, xmls.default_widget, "MovieWidgets"),
@@ -50,6 +62,9 @@ default_xmls = {
     "custom1.widget": (custom1_widgets_xml, xmls.default_widget, "Custom1Widgets"),
     "custom2.widget": (custom2_widgets_xml, xmls.default_widget, "Custom2Widgets"),
     "custom3.widget": (custom3_widgets_xml, xmls.default_widget, "Custom3Widgets"),
+    "custom4.widget": (custom4_widgets_xml, xmls.default_widget, "Custom4Widgets"),
+    "custom5.widget": (custom5_widgets_xml, xmls.default_widget, "Custom5Widgets"),
+    "custom6.widget": (custom6_widgets_xml, xmls.default_widget, "Custom6Widgets"),
     "movie.main_menu": (movies_main_menu_xml, xmls.default_main_menu, "MoviesMainMenu"),
     "tvshow.main_menu": (
         tvshows_main_menu_xml,
@@ -71,6 +86,21 @@ default_xmls = {
         xmls.default_main_menu,
         "Custom3MainMenu",
     ),
+       "custom4.main_menu": (
+        custom4_main_menu_xml,
+        xmls.default_main_menu,
+        "Custom4MainMenu",
+    ),
+    "custom5.main_menu": (
+        custom5_main_menu_xml,
+        xmls.default_main_menu,
+        "Custom5MainMenu",
+    ),
+    "custom6.main_menu": (
+        custom6_main_menu_xml,
+        xmls.default_main_menu,
+        "Custom6MainMenu",
+    ),
 }
 main_include_dict = {
     "movie": {"main_menu": None, "widget": "MovieWidgets"},
@@ -78,6 +108,9 @@ main_include_dict = {
     "custom1": {"main_menu": None, "widget": "Custom1Widgets"},
     "custom2": {"main_menu": None, "widget": "Custom2Widgets"},
     "custom3": {"main_menu": None, "widget": "Custom3Widgets"},
+    "custom4": {"main_menu": None, "widget": "Custom4Widgets"},
+    "custom5": {"main_menu": None, "widget": "Custom5Widgets"},
+    "custom6": {"main_menu": None, "widget": "Custom6Widgets"},
 }
 widget_types = (
     ("Poster", "WidgetListPoster"),
@@ -255,6 +288,21 @@ class CPaths:
                 xmls.main_menu_custom3_xml,
                 "custom3.main_menu",
             ),
+            "custom4": (
+                custom4_main_menu_xml,
+                xmls.main_menu_custom4_xml,
+                "custom4.main_menu",
+            ),
+            "custom5": (
+                custom5_main_menu_xml,
+                xmls.main_menu_custom5_xml,
+                "custom5.main_menu",
+            ),
+            "custom6": (
+                custom6_main_menu_xml,
+                xmls.main_menu_custom6_xml,
+                "custom6.main_menu",
+            ),
         }
         media_values = media_types.get(self.media_type)
         if media_values:
@@ -280,6 +328,9 @@ class CPaths:
             "custom1": custom1_widgets_xml,
             "custom2": custom2_widgets_xml,
             "custom3": custom3_widgets_xml,
+            "custom4": custom4_widgets_xml,
+            "custom5": custom5_widgets_xml,
+            "custom6": custom6_widgets_xml,
         }
         xml_filename = media_type_to_xml.get(self.media_type)
         xml_file = "special://skin/xml/%s.xml" % xml_filename
@@ -289,6 +340,9 @@ class CPaths:
             "custom1": 23010,
             "custom2": 24010,
             "custom3": 25010,
+            "custom4": 26010,
+            "custom5": 28010,
+            "custom6": 29010,
         }
         list_id = media_type_id.get(self.media_type)
         final_format = xmls.media_xml_start.format(main_include=self.main_include)
@@ -409,6 +463,9 @@ class CPaths:
         custom1_cpath = self.fetch_one_cpath("custom1.main_menu")
         custom2_cpath = self.fetch_one_cpath("custom2.main_menu")
         custom3_cpath = self.fetch_one_cpath("custom3.main_menu")
+        custom4_cpath = self.fetch_one_cpath("custom4.main_menu")
+        custom5_cpath = self.fetch_one_cpath("custom5.main_menu")
+        custom6_cpath = self.fetch_one_cpath("custom6.main_menu")
         movie_cpath_header = movie_cpath.get("cpath_header") if movie_cpath else None
         tvshow_cpath_header = tvshow_cpath.get("cpath_header") if tvshow_cpath else None
         custom1_cpath_header = (
@@ -420,11 +477,24 @@ class CPaths:
         custom3_cpath_header = (
             custom3_cpath.get("cpath_header") if custom3_cpath else None
         )
+        custom4_cpath_header = (
+            custom4_cpath.get("cpath_header") if custom4_cpath else None
+        )
+        custom5_cpath_header = (
+            custom5_cpath.get("cpath_header") if custom5_cpath else None
+        )
+        custom6_cpath_header = (
+            custom6_cpath.get("cpath_header") if custom6_cpath else None
+        )
         default_movie_string_id = 342
         default_tvshow_string_id = 20343
         default_custom1_string = "Custom 1"
         default_custom2_string = "Custom 2"
         default_custom3_string = "Custom 3"
+        default_custom4_string = "Custom 4"
+        default_custom5_string = "Custom 5"
+        default_custom6_string = "Custom 6"
+        
         default_movie_value = (
             xbmc.getLocalizedString(default_movie_string_id)
             if not movie_cpath_header
@@ -444,6 +514,15 @@ class CPaths:
         default_custom3_value = (
             default_custom3_string if not custom3_cpath_header else custom3_cpath_header
         )
+        default_custom4_value = (
+            default_custom4_string if not custom4_cpath_header else custom4_cpath_header
+        )
+        default_custom5_value = (
+            default_custom5_string if not custom5_cpath_header else custom5_cpath_header
+        )
+        default_custom6_value = (
+            default_custom6_string if not custom6_cpath_header else custom6_cpath_header
+        )
         xbmc.executebuiltin("Skin.SetString(MenuMovieLabel,%s)" % default_movie_value)
         xbmc.executebuiltin("Skin.SetString(MenuTVShowLabel,%s)" % default_tvshow_value)
         xbmc.executebuiltin(
@@ -454,6 +533,15 @@ class CPaths:
         )
         xbmc.executebuiltin(
             "Skin.SetString(MenuCustom3Label,%s)" % default_custom3_value
+        )
+        xbmc.executebuiltin(
+            "Skin.SetString(MenuCustom4Label,%s)" % default_custom4_value
+        )
+        xbmc.executebuiltin(
+            "Skin.SetString(MenuCustom5Label,%s)" % default_custom5_value
+        )
+        xbmc.executebuiltin(
+            "Skin.SetString(MenuCustom6Label,%s)" % default_custom6_value
         )
 
     def manage_action(self, cpath_setting, context="widget"):
@@ -548,6 +636,9 @@ class CPaths:
                         "custom1.main_menu": "Custom 1",
                         "custom2.main_menu": "Custom 2",
                         "custom3.main_menu": "Custom 3",
+                        "custom4.main_menu": "Custom 4",
+                        "custom5.main_menu": "Custom 5",
+                        "custom6.main_menu": "Custom 6",
                     }
                     cpath_header = cpath_map.get(
                         cpath_setting, "Default main menu label not found"
@@ -616,12 +707,12 @@ class CPaths:
             )
 
     def reload_skin(self):
-        if window.getProperty("nimbus.clear_path_refresh") == "true":
+        if window.getProperty("nimbusx8.clear_path_refresh") == "true":
             return
-        window.setProperty("nimbus.clear_path_refresh", "true")
+        window.setProperty("nimbusx8.clear_path_refresh", "true")
         while xbmcgui.getCurrentWindowId() == 10035:
             xbmc.sleep(500)
-        window.setProperty("nimbus.clear_path_refresh", "")
+        window.setProperty("nimbusx8.clear_path_refresh", "")
         xbmc.sleep(200)
         xbmc.executebuiltin("ReloadSkin()")
 
@@ -685,6 +776,9 @@ def remake_all_cpaths(silent=False):
         "custom1.widget",
         "custom2.widget",
         "custom3.widget",
+        "custom4.widget",
+        "custom5.widget",
+        "custom6.widget",
     ):
         CPaths(item).remake_widgets()
     for item in (
@@ -693,6 +787,9 @@ def remake_all_cpaths(silent=False):
         "custom1.main_menu",
         "custom2.main_menu",
         "custom3.main_menu",
+        "custom4.main_menu",
+        "custom5.main_menu",
+        "custom6.main_menu",
     ):
         CPaths(item).remake_main_menus()
     if not silent:

@@ -9,12 +9,12 @@ import re
 # logger = xbmc.log
 
 settings_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/"
+    "special://profile/addon_data/script.nimbusx8.helper/"
 )
 ratings_database_path = xbmcvfs.translatePath(
-    "special://profile/addon_data/script.nimbus.helper/ratings_cache.db"
+    "special://profile/addon_data/script.nimbusx8.helper/ratings_cache.db"
 )
-IMAGE_PATH = "special://home/addons/skin.nimbus/resources/rating_images/"
+IMAGE_PATH = "special://home/addons/skin.nimbusx8/resources/rating_images/"
 
 
 def make_session(url="https://"):
@@ -229,7 +229,7 @@ class MDbListAPI:
 
 def play_trailer():
     if not xbmc.getCondVisibility(
-        "String.IsEmpty(Window(Home).Property(nimbus.trailer_ready))"
+        "String.IsEmpty(Window(Home).Property(nimbusx8.trailer_ready))"
     ):
         is_episode = xbmc.getCondVisibility("String.IsEqual(ListItem.DBType,episode)")
         is_season = xbmc.getCondVisibility("String.IsEqual(ListItem.DBType,season)")

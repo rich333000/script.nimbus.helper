@@ -19,7 +19,7 @@ media_xml_body = '''
 history_xml_body = '''
     <item>
       <label>$NUMBER[{spath}]</label>
-      <onclick>RunScript(script.nimbus.helper,mode=re_search)</onclick>
+      <onclick>RunScript(script.nimbusx8.helper,mode=re_search)</onclick>
     </item>'''
 
 main_menu_movies_xml = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -87,12 +87,51 @@ main_menu_custom3_xml = '''<?xml version="1.0" encoding="UTF-8"?>
   </include>
 </includes>'''
 
+main_menu_custom4_xml = '''<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="Custom4MainMenu">
+    <item>
+      <label>{cpath_header}</label>
+      <onclick>ActivateWindow(Videos,{main_menu_path},return)</onclick>
+      <property name="menu_id">$NUMBER[26000]</property>
+      <property name="id">custom4</property>
+      <visible>!Skin.HasSetting(HomeMenuNoCustom4Button)</visible>
+    </item>
+  </include>
+</includes>'''
+
+main_menu_custom5_xml = '''<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="Custom5MainMenu">
+    <item>
+      <label>{cpath_header}</label>
+      <onclick>ActivateWindow(Videos,{main_menu_path},return)</onclick>
+      <property name="menu_id">$NUMBER[28000]</property>
+      <property name="id">custom5</property>
+      <visible>!Skin.HasSetting(HomeMenuNoCustom5Button)</visible>
+    </item>
+  </include>
+</includes>'''
+
+main_menu_custom6_xml = '''<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="Custom6MainMenu">
+    <item>
+      <label>{cpath_header}</label>
+      <onclick>ActivateWindow(Videos,{main_menu_path},return)</onclick>
+      <property name="menu_id">$NUMBER[29000]</property>
+      <property name="id">custom6</property>
+      <visible>!Skin.HasSetting(HomeMenuNoCustom6Button)</visible>
+    </item>
+  </include>
+</includes>'''
+
 search_history_xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <includes>
   <include name="SearchHistory">
     <item>
       <label>{spath}</label>
-      <onclick>RunScript(script.nimbus.helper,mode=re_search)</onclick>
+      <onclick>RunScript(script.nimbusx8.helper,mode=re_search)</onclick>
     </item>
   </include>
 </includes>'''

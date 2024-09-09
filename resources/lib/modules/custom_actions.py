@@ -9,9 +9,9 @@ POSSIBLE_KEYMAP_NAMES = ["gen.xml", "keyboard.xml", "keymap.xml"]
 
 
 def show_changelog():
-    helper_addon = xbmcaddon.Addon("script.nimbus.helper")
+    helper_addon = xbmcaddon.Addon("script.nimbusx8.helper")
     helper_version = helper_addon.getAddonInfo("version")
-    skin_addon = xbmcaddon.Addon("skin.nimbus")
+    skin_addon = xbmcaddon.Addon("skin.nimbusx8")
     skin_version = skin_addon.getAddonInfo("version")
     skin_name = skin_addon.getAddonInfo("name")
     changelog_path = xbmcvfs.translatePath("special://skin/nimbuschangelog.txt")
@@ -258,7 +258,7 @@ def modify_keymap():
             # Check if the script action already exists and update it
             found = False
             for key_tag in root.findall(".//key"):
-                if key_tag.text == "RunScript(script.nimbus.helper, mode=play_trailer)":
+                if key_tag.text == "RunScript(script.nimbusx8.helper, mode=play_trailer)":
                     key_tag.set("id", captured_key)
                     found = True
                     break
@@ -272,7 +272,7 @@ def modify_keymap():
                 if keyboard_tag is None:
                     keyboard_tag = ET.SubElement(global_tag, "keyboard")
                 ET.SubElement(keyboard_tag, "key", id=captured_key).text = (
-                    "RunScript(script.nimbus.helper, mode=play_trailer)"
+                    "RunScript(script.nimbusx8.helper, mode=play_trailer)"
                 )
 
             pretty_xml = minidom.parseString(ET.tostring(root, "utf-8")).toprettyxml(
@@ -310,11 +310,11 @@ def modify_keymap():
 #                 keyboard_tag = ET.SubElement(global_tag, "keyboard")
 #             for tag_list in [play_pause_tags, t_key_tags]:
 #                 for tag in tag_list:
-#                     tag.text = "RunScript(script.nimbus.helper, mode=play_trailer)"
+#                     tag.text = "RunScript(script.nimbusx8.helper, mode=play_trailer)"
 #             if not t_key_tags:
-#                 ET.SubElement(keyboard_tag, "t").text = "RunScript(script.nimbus.helper, mode=play_trailer)"
+#                 ET.SubElement(keyboard_tag, "t").text = "RunScript(script.nimbusx8.helper, mode=play_trailer)"
 #             if not play_pause_tags:
-#                 ET.SubElement(keyboard_tag, "play_pause", mod="longpress").text = "RunScript(script.nimbus.helper, mode=play_trailer)"
+#                 ET.SubElement(keyboard_tag, "play_pause", mod="longpress").text = "RunScript(script.nimbusx8.helper, mode=play_trailer)"
 #             pretty_xml = minidom.parseString(ET.tostring(root, 'utf-8')).toprettyxml(indent="  ")
 #             with xbmcvfs.File(keymap_path, "w") as xml_file:
 #                 xml_file.write("\n".join([line for line in pretty_xml.split("\n") if line.strip()]))
